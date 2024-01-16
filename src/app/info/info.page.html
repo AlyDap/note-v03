@@ -1,45 +1,87 @@
-<!-- <ion-header [translucent]="true">
- <ion-toolbar>
-  <ion-title>{{ nim }}</ion-title>
- </ion-toolbar>
-</ion-header> -->
+<ion-menu contentId="main-content-2">
+ <ion-header>
+  <ion-toolbar>
+   <ion-title>Informasi Catatan</ion-title>
+  </ion-toolbar>
+ </ion-header>
+ <ion-content class="ion-padding">
+  <p>
+   Waktu Buat: {{tgl_buat}}
+  </p>
+  <p>
+   Waktu Edit: {{tgl_edit}}
+  </p>
 
-<ion-content [fullscreen]="true">
+  <ion-button expand="block" color="danger" (click)="deleteMahasiswa()">Hapus Catatan</ion-button>
+ </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content-2">
+ <!-- header -->
+ <!-- top -->
+ <ion-header class="ion-text-left">
+  <ion-toolbar>
+   <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+   </ion-buttons>
+   <ion-title>ID: {{ id }}</ion-title>
+  </ion-toolbar>
+ </ion-header>
 
- <!-- data -->
- <ion-card>
-  <ion-card-header>
-   <ion-card-title>ID: {{ id }}</ion-card-title>
-   <ion-card-subtitle>Waktu Buat: {{tgl_buat}}</ion-card-subtitle>
-   <ion-card-subtitle>Terakhir Edit: {{tgl_edit}}</ion-card-subtitle>
-  </ion-card-header>
+ <!-- first menu -->
+ <!-- <ion-button expand="block" (click)="openFirstMenu()">Open First Menu</ion-button> -->
+ <ion-menu menuId="first-menu" contentId="main-content">
+  <ion-header>
+   <ion-toolbar>
+    <ion-title>First Menu</ion-title>
+   </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">This is the first menu content.</ion-content>
+ </ion-menu>
 
-  <ion-card-content>
-   <p>Nama: {{ nama }}</p>
-   <p>Prodi: {{ prodi }}</p>
-  </ion-card-content>
- </ion-card>
-</ion-content>
+ <!-- content -->
+ <ion-content>
 
-<ion-fab slot="fixed" vertical="top" horizontal="end">
- <ion-fab-button>
-  <ion-icon name="pencil"></ion-icon>
- </ion-fab-button>
-</ion-fab>
-<!-- kiri kembali-->
-<ion-fab slot="fixed" vertical="bottom" horizontal="start">
- <ion-fab-button [routerLink]="['/home']">
-  <ion-icon name="arrow-back"></ion-icon>
- </ion-fab-button>
-</ion-fab>
-<!-- kanan edit/save-->
-<ion-fab slot="fixed" vertical="bottom" horizontal="end">
- <ion-fab-button>
-  <ion-icon name="save"></ion-icon>
- </ion-fab-button>
-</ion-fab>
-<ion-footer>
- <ion-toolbar class="ion-text-center">
-  <ion-title>{{ nim }}.txt</ion-title>
- </ion-toolbar>
-</ion-footer>
+  <!-- data -->
+  <ion-card>
+   <!-- <ion-card-header>
+    <ion-card-title>ID: {{ id }}</ion-card-title>
+    <ion-card-subtitle>Waktu Buat: {{tgl_buat}}</ion-card-subtitle>
+    <ion-card-subtitle>Terakhir Edit: {{tgl_edit}}</ion-card-subtitle>
+   </ion-card-header> -->
+
+   <ion-card-content>
+    <p>Catatan 1: {{ nama }}</p>
+    <!-- <p>Catatan 2: {{ prodi }}</p> -->
+   </ion-card-content>
+  </ion-card>
+  <ion-card>
+   <ion-card-content>
+    <p>Catatan 2: {{ prodi }}</p>
+   </ion-card-content>
+  </ion-card>
+ </ion-content>
+
+ <ion-fab slot="fixed" vertical="top" horizontal="end">
+  <ion-fab-button>
+   <ion-icon name="pencil"></ion-icon>
+  </ion-fab-button>
+ </ion-fab>
+ <!-- kiri kembali-->
+ <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+  <ion-fab-button [routerLink]="['/home']">
+   <ion-icon name="arrow-back"></ion-icon>
+  </ion-fab-button>
+ </ion-fab>
+ <!-- kanan edit/save-->
+ <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button>
+   <ion-icon name="save"></ion-icon>
+  </ion-fab-button>
+ </ion-fab>
+ <ion-footer>
+  <ion-toolbar class="ion-text-center">
+   <ion-title>{{ nim }}.txt</ion-title>
+  </ion-toolbar>
+ </ion-footer>
+
+</div>

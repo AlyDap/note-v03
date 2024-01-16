@@ -5,6 +5,7 @@ import {
   MahasiswaService,
 } from '../services/mahasiswa/mahasiswa.service';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-info',
@@ -22,8 +23,18 @@ export class InfoPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private mahasiswaService: MahasiswaService,
-    private router: Router  // Import Router
+    private router: Router,  // Import Router
+    private menuCtrl: MenuController
   ) { }
+
+  openFirstMenu() {
+    /**
+     * Open the menu by menu-id
+     * We refer to the menu using an ID
+     * because multiple "start" menus exist.
+     */
+    this.menuCtrl.open('first-menu');
+  }
 
   ngOnInit() {
     // Mengambil parameter id dari URL
@@ -71,5 +82,18 @@ export class InfoPage implements OnInit {
     const formattedTime = new Intl.DateTimeFormat('id-ID', optionsTime).format(date);
 
     return `${formattedDate} (${formattedTime.replace(/\./g, ':')})`;
+  }
+
+  async deleteMahasiswa() {
+    const confirmation = window.confirm('Apakah Anda yakin ingin menghapus catatan ini?');
+    if (confirmation) {
+      try {
+        await this.mahasiswaService.deleteMahasiswa(this.id);
+        // Redirect ke halaman lain setelah penghapusan jika diperlukan
+        this.router.navigate(['/home']);
+      } catch (e) {
+        console.error('Error deleting mahasiswa:', e);
+      }
+    }
   }
 }
