@@ -41,7 +41,7 @@ export class HomePage implements OnInit, OnDestroy {
   const query = event.detail.value.toLowerCase();
   this.results2 = this.mahasiswaList.filter((mahasiswa) =>
    // mahasiswa.nama.includes(query) ||
-   mahasiswa.nama.toLowerCase().includes(query)
+   mahasiswa.nim.toLowerCase().includes(query)
   );
  }
 

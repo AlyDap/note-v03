@@ -8,6 +8,7 @@ import {
  getDoc,
  getDocs,
  updateDoc,
+ serverTimestamp,
 } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
 
@@ -15,8 +16,8 @@ export interface Mahasiswa {
  nim: string;
  nama: string;
  prodi: string;
- tgl_buat: string;
- tgl_edit: string;
+ tgl_buat: any;
+ tgl_edit: any;
  id?: string;
 }
 
@@ -34,6 +35,10 @@ export class MahasiswaService {
 
  async addMahasiswa(data: Mahasiswa) {
   try {
+   // Set tgl_buat dan tgl_edit sebelum menyimpan data
+   const currentTime = serverTimestamp();
+   data.tgl_buat = currentTime;
+   data.tgl_edit = currentTime;
    //menyimpan
    const dataRef: any = collection(this.firestore, 'mahasiswa');
    const response = await addDoc(dataRef, data);
@@ -93,9 +98,18 @@ export class MahasiswaService {
 
  async updateMahasiswa(id: string, data: Mahasiswa) {
   try {
+   // Set tgl_edit sebelum menyimpan data
+   const currentTime = serverTimestamp();
+   data.tgl_edit = currentTime;
    //update
    const dataRef: any = doc(this.firestore, `mahasiswa/${id}`);
-   await updateDoc(dataRef, data);
+   // Menggabungkan properti data dengan tgl_edit
+   const updatedData = {
+    ...data,
+    tgl_edit: currentTime,
+   };
+   // memperbarui dokumen di firestore
+   await updateDoc(dataRef, updatedData);
    //menambahkan data update pada tampilan
    let currentMahasiswa = this._mahasiswa.value;
    const index = currentMahasiswa.findIndex((x) => x.id == id);
