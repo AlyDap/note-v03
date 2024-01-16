@@ -1,0 +1,45 @@
+<!-- <ion-header [translucent]="true">
+ <ion-toolbar>
+  <ion-title>{{ nim }}</ion-title>
+ </ion-toolbar>
+</ion-header> -->
+
+<ion-content [fullscreen]="true">
+
+ <!-- data -->
+ <ion-card>
+  <ion-card-header>
+   <ion-card-title>ID: {{ id }}</ion-card-title>
+   <ion-card-subtitle>Waktu Buat: {{tgl_buat}}</ion-card-subtitle>
+   <ion-card-subtitle>Terakhir Edit: {{tgl_edit}}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+   <p>Nama: {{ nama }}</p>
+   <p>Prodi: {{ prodi }}</p>
+  </ion-card-content>
+ </ion-card>
+</ion-content>
+
+<ion-fab slot="fixed" vertical="top" horizontal="end">
+ <ion-fab-button>
+  <ion-icon name="pencil"></ion-icon>
+ </ion-fab-button>
+</ion-fab>
+<!-- kiri kembali-->
+<ion-fab slot="fixed" vertical="bottom" horizontal="start">
+ <ion-fab-button [routerLink]="['/home']">
+  <ion-icon name="arrow-back"></ion-icon>
+ </ion-fab-button>
+</ion-fab>
+<!-- kanan edit/save-->
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+ <ion-fab-button>
+  <ion-icon name="save"></ion-icon>
+ </ion-fab-button>
+</ion-fab>
+<ion-footer>
+ <ion-toolbar class="ion-text-center">
+  <ion-title>{{ nim }}.txt</ion-title>
+ </ion-toolbar>
+</ion-footer>
