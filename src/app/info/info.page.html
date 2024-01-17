@@ -61,11 +61,11 @@
   </ion-card>
  </ion-content>
 
- <ion-fab slot="fixed" vertical="top" horizontal="end">
+ <!-- <ion-fab slot="fixed" vertical="top" horizontal="end">
   <ion-fab-button>
    <ion-icon name="pencil"></ion-icon>
   </ion-fab-button>
- </ion-fab>
+ </ion-fab> -->
  <!-- kiri kembali-->
  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
   <ion-fab-button [routerLink]="['/home']">
@@ -74,8 +74,8 @@
  </ion-fab>
  <!-- kanan edit/save-->
  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-  <ion-fab-button>
-   <ion-icon name="save"></ion-icon>
+  <ion-fab-button [routerLink]="['/edit',id]">
+   <ion-icon name="pencil"></ion-icon>
   </ion-fab-button>
  </ion-fab>
  <ion-footer>

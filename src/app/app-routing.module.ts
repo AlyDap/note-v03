@@ -13,6 +13,10 @@ const routes: Routes = [
       import('./info/info.module').then((m) => m.InfoPageModule),
   },
   {
+    path: 'edit/:id',
+    loadChildren: () => import('./edit/edit.module').then(m => m.EditPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full',

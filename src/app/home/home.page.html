@@ -1,102 +1,103 @@
 <!-- Menu side bar -->
 <ion-menu contentId="main-content">
- <ion-header>
-  <ion-toolbar>
-   <ion-title>Menu</ion-title>
-  </ion-toolbar>
- </ion-header>
- <ion-content class="ion-padding">Belum ada theme</ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">Belum ada theme</ion-content>
 </ion-menu>
 <!-- halaman -->
 <div class="ion-page" id="main-content">
- <!-- top -->
- <ion-header class="ion-text-left">
-  <ion-toolbar>
-   <ion-buttons slot="start">
-    <ion-menu-button></ion-menu-button>
-   </ion-buttons>
-   <ion-title>Note</ion-title>
-  </ion-toolbar>
-  <ion-toolbar>
-   <ion-searchbar animated="true" placeholder="Cari Note" [debounce]="100"
-    (ionInput)="handleInput2($event)"></ion-searchbar>
-  </ion-toolbar>
- </ion-header>
+  <!-- top -->
+  <ion-header class="ion-text-left">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Note</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar animated="true" placeholder="Cari Note" [debounce]="100"
+        (ionInput)="handleInput2($event)"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
 
- <!-- isi content -->
- <!-- <ion-content class="ion-padding">
+  <!-- isi content -->
+  <!-- <ion-content class="ion-padding">
     Tap the button in the toolbar to open the menu.
   </ion-content> -->
- <div id="container">
-  <ion-list>
-   <ion-item *ngFor="let result of results2" [routerLink]="['/info',result.id]">
-    <!-- <ion-label
+  <div id="container">
+    <br><br>
+    <ion-list>
+      <ion-item *ngFor="let result of results2" [routerLink]="['/info',result.id]">
+        <!-- <ion-label
           >{{ result.nim }} - {{ result.nama }} - {{ result.prodi }}</ion-label
         > -->
-    <ion-label>{{ result.nim }}</ion-label>
-   </ion-item>
-  </ion-list>
-  <br />
+        <ion-label>{{ result.nim }}</ion-label>
+      </ion-item>
+    </ion-list>
+    <br />
 
-  <!-- end of list -->
-  <strong>Ready to create an app?</strong>
-  <p>
-   Start with Ionic
-   <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a>
-  </p>
- </div>
+    <!-- end of list -->
+    <strong>Ready to create an app?</strong>
+    <p>
+      Start with Ionic
+      <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a>
+    </p>
+  </div>
 
 
- <!-- input note -->
- <ion-modal [isOpen]="isOpen" (willDismiss)="onWillDismiss($event)">
-  <ng-template>
-   <ion-header>
-    <ion-toolbar>
-     <ion-buttons slot="start">
-      <ion-button (click)="cancel()">
-       <ion-icon name="arrow-back-outline"></ion-icon>
-      </ion-button>
-     </ion-buttons>
-     <ion-title>Tambah Catatan</ion-title>
+  <!-- input note -->
+  <ion-modal [isOpen]="isOpen" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Tambah Catatan</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <form #f="ngForm">
+          <ion-item>
+            <ion-input label="Judul" labelPlacement="floating" type="text" name="nim" placeholder="Masukkan Judul"
+              [(ngModel)]="model.nim" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item class="ion-margin-vertical">
+            <ion-textarea label="Catatan 1" labelPlacement="floating" type="text" name="nama"
+              placeholder="Masukkan Catatan 1" [(ngModel)]="model.nama" required>
+            </ion-textarea>
+          </ion-item>
+
+          <ion-item class="ion-margin-vertical">
+            <ion-textarea label="Catatan 2" labelPlacement="floating" type="text" name="prodi"
+              placeholder="Masukkan Catatan 2" [(ngModel)]="model.prodi" required>
+            </ion-textarea>
+          </ion-item>
+
+          <ion-button color="success" expand="block" shape="round" (click)="save(f)">Simpan</ion-button>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+
+  <!-- footer -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="isOpen = true">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-footer>
+    <ion-toolbar class="ion-text-center">
+      <ion-title>Tombol Footer</ion-title>
     </ion-toolbar>
-   </ion-header>
-   <ion-content class="ion-padding">
-    <form #f="ngForm">
-     <ion-item>
-      <ion-input label="Judul" labelPlacement="floating" type="text" name="nim" placeholder="Masukkan Judul"
-       [(ngModel)]="model.nim" required>
-      </ion-input>
-     </ion-item>
-
-     <ion-item class="ion-margin-vertical">
-      <ion-textarea label="Catatan 1" labelPlacement="floating" type="text" name="nama" placeholder="Masukkan Catatan 1"
-       [(ngModel)]="model.nama" required>
-      </ion-textarea>
-     </ion-item>
-
-     <ion-item class="ion-margin-vertical">
-      <ion-textarea label="Catatan 2" labelPlacement="floating" type="text" name="prodi"
-       placeholder="Masukkan Catatan 2" [(ngModel)]="model.prodi" required>
-      </ion-textarea>
-     </ion-item>
-
-     <ion-button color="success" expand="block" shape="round" (click)="save(f)">Simpan</ion-button>
-    </form>
-   </ion-content>
-  </ng-template>
- </ion-modal>
-
-
-
- <!-- footer -->
- <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-  <ion-fab-button (click)="isOpen = true">
-   <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
- </ion-fab>
- <ion-footer>
-  <ion-toolbar class="ion-text-center">
-   <ion-title>Tombol Footer</ion-title>
-  </ion-toolbar>
- </ion-footer>
+  </ion-footer>
 </div>
